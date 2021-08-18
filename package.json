@@ -1,0 +1,21 @@
+{
+    "name": "imnotArt Access Contract",
+    "version": "1.0.0",
+    "description": "imnotArt Access Contract written in Solidity for the Ethereum Blockchain",
+    "author": "ianmolson@gmail.com",
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.2.0",
+        "@rarible/royalties": "^0.7.0",
+        "chai": "^4.3.4",
+        "chai-as-promised": "^7.1.1",
+        "truffle": "^5.1.65",
+        "truffle-assertions": "^0.9.2",
+        "truffle-contract-size": "^2.0.1",
+        "truffle-flattener": "^1.5.0",
+        "truffle-hdwallet-provider": "^1.0.6",
+        "web3": "^1.5.0"
+    },
+    "devDependencies": {
+        "truffle-plugin-verify": "^0.5.11"
+    }
+}
