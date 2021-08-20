@@ -16,18 +16,19 @@ import "./rarible/library/LibPart.sol";
 import "./rarible/library/LibRoyaltiesV2.sol";
 import "./rarible/RoyaltiesV2.sol";
 
-contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
+contract imnotArtAllAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
     using SafeMath for uint256;
 
     // ---
     // Constants
     // ---
+    uint public constant MAX_INVOCATIONS = 99;
     bytes4 private constant _INTERFACE_ID_ERC165 = 0x01ffc9a7;
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
     bytes4 private constant _INTERFACE_ID_ERC721_METADATA = 0x5b5e139f;
     bytes4 private constant _INTERFACE_ID_ERC721_ENUMERABLE = 0x780e9d63;
     bytes4 private constant _INTERFACE_ID_EIP2981 = 0x2a55205a;
-    uint16 constant public imnotArtSecondarySaleBps = 500; // 5% of Secondary Sale
+    uint16 public constant imnotArtSecondarySaleBps = 500; // 5% of Secondary Sale
 
     // ---
     // Properties
@@ -40,12 +41,6 @@ contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
     // Events
     // ---
     event PermanentURI(string _value, uint256 indexed _id); // OpenSea Freezing Metadata
-    event Debug(
-        string message,
-        address indexed contractAddress,
-        uint256 indexed tokenId,
-        address indexed claimedAddress
-    );
 
     // ---
     // Security
@@ -70,6 +65,7 @@ contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
     // ---
     // Mappings
     // ---
+    mapping(uint256 => string) private metadataByTokenId;
     mapping(address => bool) private validContractAddresses;
     mapping(address => mapping(uint256 => bool)) private validTokenIdsByContract;
     mapping(address => mapping(uint256 => address)) private contractToTokenToClaimedAddress;
@@ -77,7 +73,7 @@ contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
     // ---
     // Constructor
     // ---
-    constructor() ERC721("imnotArt Access", "") {
+    constructor() ERC721("imnotArt All Access", "IMNOTARTALLACCESS") { 
         _isAdmin[msg.sender] = true;
 
         // imnotArt Mainnet Gnosis Safe
@@ -103,15 +99,18 @@ contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
     // Minting
     // ---
     function mint(address contractAddress, uint256 tokenId) public onlyValidContractAddress(contractAddress) returns (uint256 accessPassId) {
-        require(contractToTokenToClaimedAddress[contractAddress][tokenId] == address(0), "Token ID claims are unique.");
+        require(nextTokenId.add(1) > MAX_INVOCATIONS, "There are no ALL ACCESS tokens remaining.");
+        require(contractToTokenToClaimedAddress[contractAddress][tokenId] == address(0), "ALL ACCESS token has already been minted.");
 
         BaseERC721Interface erc721Contract = BaseERC721Interface(contractAddress);
-        require(erc721Contract.ownerOf(tokenId) == msg.sender, "Only owners of the valid tokens can claim a vip pass.");
-        
+        require(erc721Contract.ownerOf(tokenId) == msg.sender, "You are not eligible to mint an ALL ACCESS token.");
+
         accessPassId = nextTokenId;
         nextTokenId = nextTokenId.add(1);
 
         contractToTokenToClaimedAddress[contractAddress][tokenId] = msg.sender;
+
+        _mint(msg.sender, accessPassId);
     }
 
     // ---
@@ -141,6 +140,13 @@ contract imnotArtAccess is Ownable, ERC721Enumerable, RoyaltiesV2 {
 
     function updateContractUri(string memory newContractUri) public onlyAdmin {
         contractUri = newContractUri;
+    }
+
+    // ---
+    // Metadata
+    // ---
+    function tokenURI(uint256 tokenId) public view override virtual onlyValidTokenId(tokenId) returns (string memory) {
+        return metadataByTokenId[tokenId];
     }
 
     // ---

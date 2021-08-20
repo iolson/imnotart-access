@@ -1,5 +1,5 @@
-const Contract = artifacts.require('imnotArtAccess')
-const mockErc721 = artifacts.require('mockErc721') // @TODO(iolson): Remove before Deployment to Rinkeby or Mainnet
+const Contract = artifacts.require('imnotArtAllAccess')
+const mockErc721 = artifacts.require('mockErc721')
 
 module.exports = function (deployer, network, accounts) {
     deployer.deploy(Contract);

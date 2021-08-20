@@ -7,23 +7,23 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "58:172:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "58:172:3:-:0;;;;;;;;",
+  "sourceMap": "58:172:5:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "58:172:5:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.4;\n\nlibrary LibRoyaltiesV2 {\n    /*\n     * bytes4(keccak256('getRaribleV2Royalties(uint256)')) == 0xcad96cca\n     */\n    bytes4 constant _INTERFACE_ID_ROYALTIES = 0xcad96cca;\n}\n",
   "sourcePath": "/Users/ianolson/code/imnotart-access/contracts/rarible/library/LibRoyaltiesV2.sol",
   "ast": {
     "absolutePath": "/Users/ianolson/code/imnotart-access/contracts/rarible/library/LibRoyaltiesV2.sol",
     "exportedSymbols": {
       "LibRoyaltiesV2": [
-        490
+        595
       ]
     },
-    "id": 491,
+    "id": 596,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 486,
+        "id": 591,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".4"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:3"
+        "src": "33:23:5"
       },
       {
         "abstract": false,
@@ -39,23 +39,23 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 490,
+        "id": 595,
         "linearizedBaseContracts": [
-          490
+          595
         ],
         "name": "LibRoyaltiesV2",
-        "nameLocation": "66:14:3",
+        "nameLocation": "66:14:5",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 489,
+            "id": 594,
             "mutability": "constant",
             "name": "_INTERFACE_ID_ROYALTIES",
-            "nameLocation": "191:23:3",
+            "nameLocation": "191:23:5",
             "nodeType": "VariableDeclaration",
-            "scope": 490,
-            "src": "175:52:3",
+            "scope": 595,
+            "src": "175:52:5",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -63,10 +63,10 @@
               "typeString": "bytes4"
             },
             "typeName": {
-              "id": 487,
+              "id": 592,
               "name": "bytes4",
               "nodeType": "ElementaryTypeName",
-              "src": "175:6:3",
+              "src": "175:6:5",
               "typeDescriptions": {
                 "typeIdentifier": "t_bytes4",
                 "typeString": "bytes4"
@@ -74,14 +74,14 @@
             },
             "value": {
               "hexValue": "30786361643936636361",
-              "id": 488,
+              "id": 593,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "217:10:3",
+              "src": "217:10:5",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_3403246794_by_1",
                 "typeString": "int_const 3403246794"
@@ -91,26 +91,26 @@
             "visibility": "internal"
           }
         ],
-        "scope": 491,
-        "src": "58:172:3",
+        "scope": 596,
+        "src": "58:172:5",
         "usedErrors": []
       }
     ],
-    "src": "33:198:3"
+    "src": "33:198:5"
   },
   "legacyAST": {
     "absolutePath": "/Users/ianolson/code/imnotart-access/contracts/rarible/library/LibRoyaltiesV2.sol",
     "exportedSymbols": {
       "LibRoyaltiesV2": [
-        490
+        595
       ]
     },
-    "id": 491,
+    "id": 596,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 486,
+        "id": 591,
         "literals": [
           "solidity",
           "^",
@@ -118,7 +118,7 @@
           ".4"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:3"
+        "src": "33:23:5"
       },
       {
         "abstract": false,
@@ -126,23 +126,23 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 490,
+        "id": 595,
         "linearizedBaseContracts": [
-          490
+          595
         ],
         "name": "LibRoyaltiesV2",
-        "nameLocation": "66:14:3",
+        "nameLocation": "66:14:5",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 489,
+            "id": 594,
             "mutability": "constant",
             "name": "_INTERFACE_ID_ROYALTIES",
-            "nameLocation": "191:23:3",
+            "nameLocation": "191:23:5",
             "nodeType": "VariableDeclaration",
-            "scope": 490,
-            "src": "175:52:3",
+            "scope": 595,
+            "src": "175:52:5",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -150,10 +150,10 @@
               "typeString": "bytes4"
             },
             "typeName": {
-              "id": 487,
+              "id": 592,
               "name": "bytes4",
               "nodeType": "ElementaryTypeName",
-              "src": "175:6:3",
+              "src": "175:6:5",
               "typeDescriptions": {
                 "typeIdentifier": "t_bytes4",
                 "typeString": "bytes4"
@@ -161,14 +161,14 @@
             },
             "value": {
               "hexValue": "30786361643936636361",
-              "id": 488,
+              "id": 593,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "217:10:3",
+              "src": "217:10:5",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_3403246794_by_1",
                 "typeString": "int_const 3403246794"
@@ -178,12 +178,12 @@
             "visibility": "internal"
           }
         ],
-        "scope": 491,
-        "src": "58:172:3",
+        "scope": 596,
+        "src": "58:172:5",
         "usedErrors": []
       }
     ],
-    "src": "33:198:3"
+    "src": "33:198:5"
   },
   "compiler": {
     "name": "solc",
@@ -191,7 +191,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-08-19T01:48:53.047Z",
+  "updatedAt": "2021-08-20T07:55:58.121Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -1,7 +1,7 @@
 const { assert } = require('chai')
 const truffleAssert = require('truffle-assertions')
 
-const Contract = artifacts.require('./imnotArtAccess.sol')
+const Contract = artifacts.require('./imnotArtAllAccess.sol')
 const Mock721 = artifacts.require('./mockErc721.sol')
 
 require('chai')
@@ -83,15 +83,15 @@ contract('Contract', (accounts) => {
 
     describe('mints', async () => {
 
-        it('can NOT allow non-owners of token id to claim a vip pass', async () => {
+        it('can NOT allow non-owners of token id to claim a all access token', async () => {
             await truffleAssert.fails(
                 contract.mint(mockErc721.address, 1, {from: accounts[1]}),
                 truffleAssert.ErrorType.REVERT,
-                "Only owners of the valid tokens can claim a vip pass."
+                "You are not eligible to mint an ALL ACCESS token."
             )
         })
 
-        it('can create a vip pass for a valid contract and token id', async () => {
+        it('can create a all access token for a valid contract and token id', async () => {
             await truffleAssert.passes(
                 contract.mint(mockErc721.address, 1)
             )
@@ -100,11 +100,11 @@ contract('Contract', (accounts) => {
             assert.equal(claimed, true)
         })
 
-        it('can NOT create a vip pass for a token id that has already been claimed', async () => {
+        it('can NOT create a all access token for a token id that has already been claimed', async () => {
             await truffleAssert.fails(
                 contract.mint(mockErc721.address, 1),
                 truffleAssert.ErrorType.REVERT,
-                "Token ID claims are unique."
+                "ALL ACCESS token has already been minted."
             )
         })
     })
